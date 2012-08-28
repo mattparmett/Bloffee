@@ -4,6 +4,8 @@ Bloffee is a static-file blog engine written in CoffeeScript.  Bloffee is powere
 Bloffee takes Markdown files and displays them in clean, valid HTML and CSS.
 
 ## Installation ##
+To host on Heroku:
+
 ```shell
 git clone https://github.com/mattparmett/bloffee.git
 cd bloffee
@@ -13,6 +15,16 @@ git commit -m "initial commit"
 heroku create
 git push heroku master
 heroku open
+```
+
+To host on your own server:
+
+```shell
+git clone https://github.com/mattparmett/bloffee.git
+cd bloffee
+rm -rf .git
+npm install # Assumes node and npm are installed globally
+node bloffee.js
 ```
 
 ## Configuration ##
@@ -47,7 +59,13 @@ Enjoy using Bloffee!  Any questions/comments are welcome at Bloffee's [GitHub pa
 
 All posts must include a Date and Title line to tell Bloffee about the title and order of the post.  The Published line is optional; if Published is set to false, Bloffee will ignore the post.
 
-The list of blog posts is updated every time a reader visits the site (but not if a visitor visits a single post), so there's no need to worry about manually updating/synchronizing your posts.
+The list of blog posts is updated every time a reader visits the site (but not if a visitor visits a single post), so there's no need to worry about manually updating/synchronizing your posts.  However, if you're hosting your blog on Heroku, you'll have to push new blog posts via git:
+
+```shell
+git add posts
+git commit -m "added new post"
+git push heroku master
+```
 
 ## Comments ##
 All comments/suggestions are welcome via pull request.
