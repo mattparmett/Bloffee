@@ -1,0 +1,17 @@
+extends layout
+block content
+  .post
+        .content
+            .title
+              a(href='#{fn}') #{title}
+            .meta
+              span.date #{date.toString().split(" ").slice(0,4).join(" ")}
+            .body-post
+              != md(body)
+          .clear
+
+block back
+  .pagination
+    ul
+      li
+        a(href="/#{page}") << Back

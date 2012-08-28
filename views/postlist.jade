@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  for post in posts
+    if post.published == true
+      .post
+          .content
+              .title
+                a(href='#{post.fn}') #{post.title}
+              .meta
+                span.date #{post.date.toString().split(" ").slice(0,4).join(" ")}
+              .body-post
+                != md(post.body)
+            .clear
+
+block pagination
+  .pagination
+    ul
+      if page > 1
+        li(class="prev")
+          a(href="#{page-1}") Prev
+      -for(var i = 1; i <= total_pages; i++){
+        if page == i
+          li(class="active")
+            a(href="#{i}") #{i}
+        else
+          li
+            a(href="#{i}") #{i}
+      -}
+      if (page + 1) <= total_pages
+        li(class="next")
+          a(href="#{page + 1}") Next
